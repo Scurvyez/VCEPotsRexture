@@ -236,7 +236,7 @@
                                 <texPath>Stewpot/Stewpot_soup_simple</texPath>
                                     <graphicClass>Graphic_Multi</graphicClass>
                                     <shaderType>Cutout</shaderType>
-                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawOffset>(0, 2.25, 0)</drawOffset>
                                     <drawSize>(1.5, 1.5)</drawSize>
                                     <damageData>
                                         <cornerTL>Damage/Corner</cornerTL>
@@ -250,7 +250,7 @@
                                 <texPath>Stewpot/Stewpot_soup_fine</texPath>
                                     <graphicClass>Graphic_Multi</graphicClass>
                                     <shaderType>Cutout</shaderType>
-                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawOffset>(0, 2.25, 0)</drawOffset>
                                     <drawSize>(1.5, 1.5)</drawSize>
                                     <damageData>
                                         <cornerTL>Damage/Corner</cornerTL>
@@ -264,7 +264,7 @@
                                 <texPath>Stewpot/Stewpot_soup_lavish</texPath>
                                     <graphicClass>Graphic_Multi</graphicClass>
                                     <shaderType>Cutout</shaderType>
-                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawOffset>(0, 2.25, 0)</drawOffset>
                                     <drawSize>(1.5, 1.5)</drawSize>
                                     <damageData>
                                         <cornerTL>Damage/Corner</cornerTL>
@@ -278,7 +278,7 @@
                                 <texPath>Stewpot/Stewpot_soup_gourmet</texPath>
                                     <graphicClass>Graphic_Multi</graphicClass>
                                     <shaderType>Cutout</shaderType>
-                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawOffset>(0, 2.25, 0)</drawOffset>
                                     <drawSize>(1.5, 1.5)</drawSize>
                                     <damageData>
                                         <cornerTL>Damage/Corner</cornerTL>
