@@ -1,0 +1,4 @@
+S:\Games\Steam\steamapps\common\RimWorld\Mods\VCEPotsRexture\1.4\Assemblies\VCEPotsRetexture.dll
+S:\Games\Steam\steamapps\common\RimWorld\Mods\VCEPotsRexture\Source\VCEPotsRetexture\VCEPotsRetexture\obj\Debug\VCEPotsRetexture.csproj.AssemblyReference.cache
+S:\Games\Steam\steamapps\common\RimWorld\Mods\VCEPotsRexture\Source\VCEPotsRetexture\VCEPotsRetexture\obj\Debug\VCEPotsRetexture.csproj.CoreCompileInputs.cache
+S:\Games\Steam\steamapps\common\RimWorld\Mods\VCEPotsRexture\Source\VCEPotsRetexture\VCEPotsRetexture\obj\Debug\VCEPotsRetexture.dll

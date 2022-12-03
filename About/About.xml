@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+
+    <name>VCEPotsRetexture</name>
+    <author>Some ass named pphhyy</author>
+    <packageId>pphhyy.VCEPotsRetexture</packageId>
+    <supportedVersions>
+        <li>1.4</li>
+    </supportedVersions>
+
+    <description>
+Put your description here. Asshat.
+    </description>
+
+    <modDependencies>
+		<li>
+			<packageId>VanillaExpanded.VCookE</packageId>
+			<displayName>Vanilla Cooking Expanded</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2134308519</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+    <loadAfter>
+        <li>Ludeon.RimWorld</li>
+        <li>Ludeon.RimWorld.Royalty</li>
+        <li>brrainz.harmony</li>
+        <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+        <li>VanillaExpanded.VCookE</li>
+    </loadAfter>
+    
+</ModMetaData>

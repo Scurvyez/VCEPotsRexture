@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Cooking Expanded</li>
+        </mods>
+
+        <match Class="PatchOperationSequence">
+            <operations>
+
+                <!-- This patch, and the next 3, changes the default texture of all 4 uncooked soups. -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_UncookedSoupSimple"]/graphicData</xpath>
+                    <value>
+                        <graphicData>
+                            <texPath>Soups/Uncooked_soup_simple</texPath>
+                            <graphicClass>Graphic_Single</graphicClass>
+                            <drawSize>(1.5, 1.5)</drawSize>
+                        </graphicData>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_UncookedSoupFine"]/graphicData</xpath>
+                    <value>
+                        <graphicData>
+                            <texPath>Soups/Uncooked_soup_fine</texPath>
+                            <graphicClass>Graphic_Single</graphicClass>
+                            <drawSize>(1.5, 1.5)</drawSize>
+                        </graphicData>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_UncookedSoupLavish"]/graphicData</xpath>
+                    <value>
+                        <graphicData>
+                            <texPath>Soups/Uncooked_soup_lavish</texPath>
+                            <graphicClass>Graphic_Single</graphicClass>
+                            <drawSize>(1.5, 1.5)</drawSize>
+                        </graphicData>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_UncookedSoupGourmet"]/graphicData</xpath>
+                    <value>
+                        <graphicData>
+                            <texPath>Soups/Uncooked_soup_gourmet</texPath>
+                            <graphicClass>Graphic_Single</graphicClass>
+                            <drawSize>(1.5, 1.5)</drawSize>
+                        </graphicData>
+                    </value>
+                </li>
+
+                <!-- Changes the icon you see in the menus for this building. -->
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]</xpath>
+                    <value>
+                        <uiIconPath>Stewpot/Stewpot_uiIcon</uiIconPath>
+                    </value>
+                </li>
+
+                <!-- This make it so electricity is no longer a required research, but smithing is. 
+                    Leave as is. -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="VCE_SoupCooking"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>Smithing</li>
+                        </prerequisites>
+                    </value>
+                </li>
+
+                <!-- The custom ThingComp below and c# contained in this mod override this. 
+                    Leave as is. -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/graphicData</xpath>
+                    <value>
+                        <graphicData>
+                            <texPath>Stewpot/Stewpot_blank</texPath>
+                            <graphicClass>Graphic_Multi</graphicClass>
+                            <drawSize>(1.5,1.5)</drawSize>
+                            <drawOffset>(0, 0, 0)</drawOffset>
+                            <shaderType>Cutout</shaderType>
+                            <damageData>
+                                <cornerTL>Damage/Corner</cornerTL>
+                                <cornerTR>Damage/Corner</cornerTR>
+                                <cornerBL>Damage/Corner</cornerBL>
+                                <cornerBR>Damage/Corner</cornerBR>
+                            </damageData>
+                        </graphicData>
+                    </value>
+                </li>
+
+                <!-- Changes the name seen in-game for the building.
+                    Make it whatever you want :) -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/label</xpath>
+                    <value>
+                        <label>Cooking Pot</label>
+                    </value>
+                </li>
+
+                <!-- Changes the tickerType to Normal. 
+                    This is necessary, otherwise the changing graphics will be delayed by 4 seconds every time. -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/tickerType</xpath>
+                    <value>
+                        <tickerType>Normal</tickerType>
+                    </value>
+                </li>
+
+                <!-- The custom ThingComp below and c# contained in this mod override this. 
+                    Leave as is. -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/comps/li[@Class="ItemProcessor.CompProperties_ItemProcessor"]/buildingOnGraphic</xpath>
+                    <value>
+                        <buildingOnGraphic>Stewpot/Stewpot_blank</buildingOnGraphic>
+                    </value>
+                </li>
+
+                <!-- The custom ThingComp below and c# contained in this mod override this. 
+                    Leave as is. -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/comps/li[@Class="ItemProcessor.CompProperties_ItemProcessor"]/buildingFinishedGraphic</xpath>
+                    <value>
+                        <buildingFinishedGraphic>Stewpot/Stewpot_blank</buildingFinishedGraphic>
+                    </value>
+                </li>
+
+                <!-- This removes the need for the building to be flicked on or off to work. -->
+                <li Class="PatchOperationRemove">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/comps/li[@Class="CompProperties_Flickable"]</xpath>
+                </li>
+
+                <!-- This removes the default need for the building to be connected to power to work. -->
+                <li Class="PatchOperationRemove">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/comps/li[@Class="CompProperties_Power"]</xpath>
+                </li>
+
+                <!-- This whole section adds new ThingComps to the building. -->
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/comps</xpath>
+                    <value>
+
+                        <!-- This is the most important part and the whole purpose of this mod. 
+                            Ask me if you need clarification on something. -->
+                        <li Class="VCEPotsRetexture.CompProperties_Stewpot_Graphics">
+
+                            <!-- These are the graphics you see when the building has no fuel and no ingredients to cook. -->
+                            <graphicLayersEmpty>
+                                <li>
+                                    <texPath>Stewpot/Stewpot_base</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 0, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                                </li>
+                            </graphicLayersEmpty>
+
+                            <!-- These are the graphics you see when the building is fueled but has no ingredients to cook. -->
+                            <graphicLayersFueled>
+                                <li>
+                                    <texPath>Stewpot/Stewpot_baseandlogs</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 0, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                                </li>
+                                <li>
+                                    <texPath>Things/Special/Fire</texPath>
+                                    <graphicClass>Graphic_Flicker</graphicClass>
+                                    <shaderType>TransparentPostLight</shaderType>
+                                    <drawOffset>(0, 1, 0)</drawOffset>
+                                    <drawSize>(1.0, 1.0)</drawSize>
+                                    <damageData>
+                                        <enabled>false</enabled>
+                                    </damageData>
+                                </li>
+                            </graphicLayersFueled>
+
+                            <!-- These are the graphics you see when the building is fueled and has ingredients to cook. -->
+                            <graphicLayersFullAndFueled>
+                                <li>
+                                    <texPath>Stewpot/Stewpot_baseandlogs</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 0, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                                </li>
+                                <li>
+                                    <texPath>Things/Special/Fire</texPath>
+                                    <graphicClass>Graphic_Flicker</graphicClass>
+                                    <shaderType>TransparentPostLight</shaderType>
+                                    <drawOffset>(0, 1, 0)</drawOffset>
+                                    <drawSize>(1.0, 1.0)</drawSize>
+                                    <damageData>
+                                        <enabled>false</enabled>
+                                    </damageData>
+                                </li>
+                                <li>
+                                    <texPath>Stewpot/Stewpot_rack</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 2, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                                </li>
+                            </graphicLayersFullAndFueled>
+
+                            <graphicSoupSimple>
+                                <texPath>Stewpot/Stewpot_soup_simple</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                            </graphicSoupSimple>
+
+                            <graphicSoupFine>
+                                <texPath>Stewpot/Stewpot_soup_fine</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                            </graphicSoupFine>
+
+                            <graphicSoupLavish>
+                                <texPath>Stewpot/Stewpot_soup_lavish</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                            </graphicSoupLavish>
+
+                            <graphicSoupGourmet>
+                                <texPath>Stewpot/Stewpot_soup_gourmet</texPath>
+                                    <graphicClass>Graphic_Multi</graphicClass>
+                                    <shaderType>Cutout</shaderType>
+                                    <drawOffset>(0, 3, 0)</drawOffset>
+                                    <drawSize>(1.5, 1.5)</drawSize>
+                                    <damageData>
+                                        <cornerTL>Damage/Corner</cornerTL>
+                                        <cornerTR>Damage/Corner</cornerTR>
+                                        <cornerBL>Damage/Corner</cornerBL>
+                                        <cornerBR>Damage/Corner</cornerBR>
+                                    </damageData>
+                            </graphicSoupGourmet>
+                        </li>
+
+                        <!-- Change what you want, it uses wood logs for now. They also last a very long time. -->
+                        <li Class="CompProperties_Refuelable">
+                            <fuelCapacity>150.0</fuelCapacity>
+                            <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+                            <initialConfigurableTargetFuelLevel>75</initialConfigurableTargetFuelLevel>
+                            <fuelFilter>
+                                <thingDefs>
+                                    <li>WoodLog</li>
+                                </thingDefs>
+                            </fuelFilter>
+                            <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                            <autoRefuelPercent>1</autoRefuelPercent>
+                            <showFuelGizmo>true</showFuelGizmo>
+                            <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+                            <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+                        </li>
+
+                        <!-- The glow only appears when the building is actually cooking stuff. Set to orange for now to match the fire. -->
+                        <li Class="CompProperties_Glower">
+                            <glowRadius>5</glowRadius>
+                            <glowColor>(255,102,0,0)</glowColor>
+                            <overlightRadius>5</overlightRadius>
+                        </li>
+
+                        <!-- Change to what you want, rooms get pretty toasty with just 6. lol -->
+                        <li Class="CompProperties_HeatPusher">
+                            <heatPerSecond>6</heatPerSecond>
+                        </li>
+                    </value>
+                </li>
+
+            </operations>
+        </match>
+    </Operation>
+</Patch>
