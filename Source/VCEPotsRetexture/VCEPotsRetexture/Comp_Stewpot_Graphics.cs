@@ -26,6 +26,7 @@ namespace VCEPotsRetexture
             CompRefuelable fuel = parent.GetComp<CompRefuelable>();
             ItemProcessor.Building_ItemProcessor processor = parent as ItemProcessor.Building_ItemProcessor;
 
+            // If the building does not have any fuel, show these graphics listed in xml.
             if (!fuel.HasFuel)
             {
                 for (int i = 0; i < PotProps.graphicLayersEmpty.Count; i++)
@@ -33,8 +34,10 @@ namespace VCEPotsRetexture
                     PotProps.graphicLayersEmpty[i].Graphic.Draw(parent.DrawPos, parent.Rotation, parent);
                 }
             }
+
             else
             {
+                // If the building is fueled and actively cooking soup, show these graphics.
                 if (processor.processorStage == ItemProcessor.ProcessorStage.Working)
                 {
                     for (int j = 0; j < PotProps.graphicLayersFullAndFueled.Count; j++)

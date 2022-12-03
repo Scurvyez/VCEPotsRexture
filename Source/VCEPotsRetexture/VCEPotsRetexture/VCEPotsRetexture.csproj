@@ -57,7 +57,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets.cs" />
     <Compile Include="Comp_Stewpot_Graphics.cs" />
     <Compile Include="CompProperties_Stewpot_Graphics.cs" />
     <Compile Include="GraphicDataLayered.cs" />
